@@ -9,7 +9,7 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-data class GroupMember(val name: String, val role: String)
+data class GroupMember(val name: String)
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         val welcomeTextView: TextView = findViewById(R.id.tvWelcome)
 
         val groupMembers = listOf(
-            GroupMember("Jorose Po", "Front End"),
-            GroupMember("Maria Victoria Catabay", "Project Manager"),
-            GroupMember("Terrence Lappay", "UI/UX"),
-            GroupMember("James Laurence Rosario", "Front End"),
-            GroupMember("Kristine Castres", "Tester")
+            GroupMember("Jorose Po"),
+            GroupMember("Maria Victoria Catabay"),
+            GroupMember("Terrence Lappay"),
+            GroupMember("James Laurence Rosario"),
+            GroupMember("Kristine Castres",)
         )
 
         val welcomeMessage = "BSIT2-01 Activity\n Members:"

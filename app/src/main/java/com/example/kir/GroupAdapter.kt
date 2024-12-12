@@ -16,7 +16,7 @@ class GroupAdapter(context: Context, private val members: List<GroupMember>) : A
 
         val member = members[position]
 
-        memberNameTextView.text = "${member.name} - ${member.role}"
+        memberNameTextView.text = "${member.name}"
 
         return view
     }

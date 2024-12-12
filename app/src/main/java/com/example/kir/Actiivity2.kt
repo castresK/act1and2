@@ -1,5 +1,6 @@
 package com.example.kir
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.BaseAdapter
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 data class Country(
@@ -16,13 +18,14 @@ data class Country(
     val capital: String,
 )
 
-
 class Activity2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act2)
 
+        // Set up ListView
+        val listView: ListView = findViewById(R.id.listView)
         val countries = listOf(
             Country(R.drawable.ph_flag, "Philippines", "Manila"),
             Country(R.drawable.us_flag, "United States", "Washington, D.C."),
@@ -46,13 +49,18 @@ class Activity2 : AppCompatActivity() {
             Country(R.drawable.egypt_flag, "Egypt", "Cairo")
         )
 
-        // Set up ListView
-        val listView: ListView = findViewById(R.id.listView)
         val adapter = CountryAdapter(countries)
         listView.adapter = adapter
+
+        //  back button
+        val backButton: ImageButton = findViewById(R.id.imageButton)
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    //ListView
+    // ListView Adapter
     class CountryAdapter(private val countries: List<Country>) : BaseAdapter() {
 
         override fun getCount(): Int = countries.size
@@ -70,7 +78,6 @@ class Activity2 : AppCompatActivity() {
                 holder = CountryViewHolder(view)
                 view.tag = holder
             } else {
-                // Reuse the convertView and ViewHolder
                 view = convertView
                 holder = view.tag as CountryViewHolder
             }
